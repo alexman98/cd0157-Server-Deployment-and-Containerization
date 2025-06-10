@@ -33,6 +33,8 @@ phases:
       - echo "deb [signed-by=/usr/share/keyrings/corretto.gpg] https://apt.corretto.aws stable main" > /etc/apt/sources.list.d/corretto.list
 
       # Update apt and install packages
+      - sed -i '/dl.google.com/d' /etc/apt/sources.list || true
+      - rm -f /etc/apt/sources.list.d/google-chrome.list || true
       - apt-get update
       - apt-get -y install jq
 
